@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+        <div style = "text-align: center;">
+        {% if messages %}
+                {% for m in messages %}
+                    <div style = "text-align: center; color: red">
+                        <br><strong>{{m.message}}</strong><br>
+                    </div>
+                {% endfor %}
+        {% endif %}
+            <form action="{%url 'urlnamelogin'%}" method="POST">
+            {% csrf_token %}
+            {{views_login_form.as_p}}
+            <button type="submit">로그인하기</button>
+        </div>
+        <script src="" async defer></script>
+{% endblock %}

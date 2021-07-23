@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}  
+    <div style="text-align: center;">
+        <form action="{%url 'urlnamenew' %}" method="POST">
+        {% csrf_token %}
+        
+        <h3>지원서 작성 페이지 입니다.</h3> <br>
+            이름 : <input type="text" name = 'htmlname' value = "{{user.name}}" readonly><br>
+            학번 : <input type="text" name = 'htmlstudent_id' value = "{{user.student_id}}" readonly><br>
+            학과 : <input type="text" name = 'htmlmajor' value = "{{user.major}}" readonly><br>
+            Q1 : <textarea name="htmlq1" cols="100" rows="10"></textarea><br>
+            Q2 : <textarea name="htmlq2" cols="100" rows="10"></textarea><br>
+            Q3 : <textarea name="htmlq3" cols="100" rows="10"></textarea><br>
+            Q4 : <textarea name="htmlq4" cols="100" rows="10"></textarea><br><br>
+            <button type="submit">제출</button>
+        
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}
